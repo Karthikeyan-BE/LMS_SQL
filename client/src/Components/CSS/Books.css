@@ -1,0 +1,73 @@
+/* Books.css */
+.addbook {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin: 2rem;
+  }
+  
+  .add {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .add input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .btn-success {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .btn-success:hover {
+    background-color: #218838;
+  }
+  
+  table {
+    width: 80%;
+    margin: auto;
+    border-collapse: collapse;
+    text-align: left;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+  
+  th {
+    background-color: #f4f4f4;
+  }
+  
+  button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius:1rem;
+  }
+  
+  button:hover {
+    background-color: #c82333;
+  }
+  .update-btn{
+    background:blue;
+  }
+  .unavail{
+    color:red
+  }
+  .book-cont{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-evenly;
+  }
