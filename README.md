@@ -1,284 +1,121 @@
-# LMS_SQL - Library Management System
+# 📚 LMS_SQL - Library Management System
 
-## 📚 Project Overview
+![Build Status](https://img.shields.io/github/actions/workflow/status/Karthikeyan-BE/LMS_SQL/ci.yml?branch=master&style=flat-square)
+![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)
+![Issues](https://img.shields.io/github/issues/Karthikeyan-BE/LMS_SQL?style=flat-square)
+![Stars](https://img.shields.io/github/stars/Karthikeyan-BE/LMS_SQL?style=flat-square)
 
-LMS_SQL is a full-stack Library Management System built with modern web technologies. This application provides a comprehensive solution for managing library operations including books, members, borrowing/returning books, reservations, and fine management. The system uses SQL database for data persistence and provides an intuitive user interface for librarians and administrators.
+**A comprehensive Library Management System built with SQL to streamline library operations, book management, and member services.**
 
-## 🚀 Tech Stack
+---
 
-### Frontend
-- **React** - JavaScript library for building user interfaces
-- **Vite** - Next-generation frontend build tool
-- **React Router** - Client-side routing
-- **Axios** - Promise-based HTTP client
-- **CSS3** - Custom styling
+## 🚀 **Features**
 
-### Backend
-- **Node.js** - JavaScript runtime environment
-- **Express.js** - Web application framework
-- **MySQL/SQL** - Relational database management
-- **Sequelize** - ORM for SQL databases
-- **dotenv** - Environment variable management
-- **CORS** - Cross-Origin Resource Sharing middleware
+| Feature | Description |
+|---------|-------------|
+| 📖 **Book Management** | Add, update, delete, and search books with detailed cataloging |
+| 👥 **Member Management** | Register members, track membership status and borrowing history |
+| 🔄 **Borrowing System** | Issue and return books with automated tracking |
+| 📅 **Reservation System** | Allow members to reserve books that are currently checked out |
+| 💰 **Fine Management** | Automatic calculation and tracking of overdue fines |
+| 📊 **Reports & Analytics** | Generate insights on library usage and popular books |
 
-### DevOps
-- **GitHub Actions** - CI/CD automation
-- **Node.js workflows** - Automated testing and deployment
+---
 
-## 📁 Project Structure
+## 🛠️ **Tech Stack**
 
-```
-LMS_SQL/
-│
-├── .github/
-│   └── workflows/          # CI/CD workflow configurations
-│       ├── Node.yml
-│       └── node.js.yml
-│
-├── client/                 # Frontend React application
-│   ├── public/            # Static assets
-│   ├── src/
-│   │   ├── Components/    # React components
-│   │   │   ├── Borrowing/ # Borrowing-related components
-│   │   │   ├── CSS/       # Component stylesheets
-│   │   │   ├── Books.jsx  # Books management
-│   │   │   ├── Borrowing.jsx
-│   │   │   ├── Error.jsx
-│   │   │   ├── Fine.jsx   # Fine management
-│   │   │   ├── Home.jsx
-│   │   │   ├── Library.jsx
-│   │   │   ├── Members.jsx # Member management
-│   │   │   ├── NavBar.jsx
-│   │   │   ├── Reservation.jsx
-│   │   │   └── SideBar.jsx
-│   │   ├── assets/        # Images and media files
-│   │   ├── App.jsx        # Main application component
-│   │   ├── App.css
-│   │   ├── main.jsx       # Application entry point
-│   │   └── index.css
-│   └── package.json       # Frontend dependencies
-│
-├── server/                # Backend Node.js application
-│   ├── Controller/        # Business logic controllers
-│   │   ├── bookController.js
-│   │   ├── borrowController.js
-│   │   ├── fineController.js
-│   │   ├── reservationController.js
-│   │   └── userController.js
-│   ├── Database/          # Database configuration
-│   │   └── dbConnect.js   # Database connection setup
-│   ├── Model/             # Sequelize data models
-│   │   ├── bookModel.js
-│   │   ├── borrowModel.js
-│   │   ├── fineModel.js
-│   │   ├── reservationModel.js
-│   │   ├── userModel.js
-│   │   └── index.js       # Model exports
-│   ├── Routes/            # API route definitions
-│   ├── .env               # Environment variables
-│   ├── index.js           # Server entry point
-│   ├── package.json       # Backend dependencies
-│   └── package-lock.json
-│
-└── package.json           # Root package.json for scripts
-```
+| Technology | Purpose |
+|------------|----------|
+| **SQL** | Database management and queries |
+| **GitHub Actions** | CI/CD automation |
+| **PostgreSQL/MySQL** | Relational database system |
 
-## ⚙️ Setup Instructions
+---
+
+## 📦 **Installation**
 
 ### Prerequisites
-- Node.js (v14 or higher)
-- npm or yarn
-- MySQL database server
-- Git
+- SQL database (MySQL 5.7+ or PostgreSQL 12+)
+- Database client (MySQL Workbench, pgAdmin, or DBeaver)
 
-### Installation
+### Steps
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Karthikeyan-BE/LMS_SQL.git
-   cd LMS_SQL
-   ```
+```bash
+# Clone the repository
+git clone https://github.com/Karthikeyan-BE/LMS_SQL.git
 
-2. **Install root dependencies**
-   ```bash
-   npm install
-   ```
+# Navigate to the project directory
+cd LMS_SQL
 
-3. **Setup Backend**
-   ```bash
-   cd server
-   npm install
-   ```
+# Execute the database schema
+psql -U your_username -d your_database -f schema.sql
 
-4. **Configure Environment Variables**
-   
-   Create a `.env` file in the `server` directory:
-   ```env
-   PORT=5000
-   DB_HOST=localhost
-   DB_USER=your_database_user
-   DB_PASSWORD=your_database_password
-   DB_NAME=library_management
-   DB_DIALECT=mysql
-   ```
+# (Optional) Load sample data
+psql -U your_username -d your_database -f sample_data.sql
+```
 
-5. **Setup Database**
-   - Create a MySQL database named `library_management` (or your chosen name)
-   - The Sequelize models will auto-create tables on first run
+---
 
-6. **Setup Frontend**
-   ```bash
-   cd ../client
-   npm install
-   ```
+## 💻 **Usage**
 
-## 🎯 Usage
+### Basic Queries
 
-### Development Mode
+```sql
+-- Search for books by title
+SELECT * FROM books WHERE title LIKE '%search_term%';
 
-1. **Start the Backend Server**
-   ```bash
-   cd server
-   npm start
-   # or for development with nodemon
-   npm run dev
-   ```
-   Server will run on `http://localhost:5000`
+-- Issue a book to a member
+INSERT INTO borrowings (book_id, member_id, borrow_date) 
+VALUES (1, 101, CURRENT_DATE);
 
-2. **Start the Frontend Development Server**
-   ```bash
-   cd client
-   npm run dev
-   ```
-   Application will open on `http://localhost:5173` (Vite default)
+-- Calculate overdue fines
+SELECT member_id, SUM(fine_amount) as total_fines 
+FROM fines 
+WHERE paid = false 
+GROUP BY member_id;
 
-3. **Access the Application**
-   - Open your browser and navigate to the frontend URL
-   - The application will communicate with the backend API
+-- Check available books
+SELECT * FROM books WHERE status = 'available';
+```
 
-### Production Build
+---
 
-1. **Build Frontend**
-   ```bash
-   cd client
-   npm run build
-   ```
+## 🗂️ **Database Schema**
 
-2. **Start Production Server**
-   ```bash
-   cd server
-   npm start
-   ```
+The system includes the following main tables:
+- **books** - Book catalog with ISBN, title, author, and availability
+- **members** - Member information and registration details
+- **borrowings** - Tracking of issued books and return dates
+- **reservations** - Book reservation queue
+- **fines** - Overdue fine calculations and payment tracking
 
-## ✨ Key Features
+---
 
-### 📖 Book Management
-- Add, edit, and delete books
-- Search and filter books by various criteria
-- Track book availability status
-- View detailed book information
+## 🤝 **Contributing**
 
-### 👥 Member Management
-- Register new library members
-- Update member information
-- View member borrowing history
-- Manage member status
+We welcome contributions! Here's how you can help:
 
-### 📚 Borrowing System
-- Issue books to members
-- Return books
-- Track due dates
-- View active borrowings
-- Borrowing history
+1. **Fork** the repository
+2. **Create** a feature branch (`git checkout -b feature/AmazingFeature`)
+3. **Commit** your changes (`git commit -m 'Add some AmazingFeature'`)
+4. **Push** to the branch (`git push origin feature/AmazingFeature`)
+5. **Open** a Pull Request
 
-### 🎫 Reservation System
-- Reserve books that are currently borrowed
-- Queue management for popular books
-- Notification system for reserved books
+Please ensure your code follows best practices and includes appropriate comments.
 
-### 💰 Fine Management
-- Automatic fine calculation for overdue books
-- Fine payment tracking
-- View outstanding fines
-- Fine history and reports
+---
 
-### 🏠 Dashboard
-- Overview of library statistics
-- Quick access to main features
-- Visual representation of library data
+## 👨‍💻 **Author**
 
-### 🎨 User Interface
-- Responsive design
-- Intuitive navigation with sidebar and navbar
-- Clean and modern UI
-- Error handling and user feedback
+**Karthikeyan-BE**
 
-## 🤝 Contribution Guide
+- GitHub: [@Karthikeyan-BE](https://github.com/Karthikeyan-BE)
+- 💼 Backend Engineer passionate about database design and optimization
+- 🎯 Building practical solutions for real-world problems
 
-We welcome contributions to the LMS_SQL project! Here's how you can contribute:
+---
 
-### Getting Started
-
-1. **Fork the repository**
-   - Click the 'Fork' button at the top right of this page
-
-2. **Clone your fork**
-   ```bash
-   git clone https://github.com/your-username/LMS_SQL.git
-   cd LMS_SQL
-   ```
-
-3. **Create a new branch**
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
-
-### Making Changes
-
-1. **Make your changes**
-   - Follow the existing code style and conventions
-   - Write clear, commented code
-   - Test your changes thoroughly
-
-2. **Commit your changes**
-   ```bash
-   git add .
-   git commit -m "Add: description of your changes"
-   ```
-
-3. **Push to your fork**
-   ```bash
-   git push origin feature/your-feature-name
-   ```
-
-4. **Create a Pull Request**
-   - Go to the original repository
-   - Click 'New Pull Request'
-   - Select your fork and branch
-   - Describe your changes in detail
-
-### Contribution Guidelines
-
-- **Code Style**: Follow JavaScript/React best practices
-- **Commits**: Use clear, descriptive commit messages
-- **Documentation**: Update README if you change functionality
-- **Testing**: Ensure all features work before submitting PR
-- **Issues**: Check existing issues before creating new ones
-
-### Reporting Bugs
-
-- Use the GitHub Issues tab
-- Describe the bug in detail
-- Include steps to reproduce
-- Mention your environment (OS, Node version, etc.)
-
-### Suggesting Features
-
-- Open an issue with the 'Feature Request' label
-- Clearly describe the feature and its benefits
-- Discuss implementation approaches
-
-## 📄 License
+## 📄 **License**
 
 This project is open source and available under the [MIT License](LICENSE).
 
@@ -306,24 +143,26 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
-## 👨‍💻 Author
+---
 
-**Karthikeyan-BE**
-- GitHub: [@Karthikeyan-BE](https://github.com/Karthikeyan-BE)
-
-## 🙏 Acknowledgments
+## 🙏 **Acknowledgments**
 
 - Thanks to all contributors who have helped improve this project
 - Built with modern web technologies and best practices
 - Inspired by real-world library management needs
 
-## 📞 Support
+---
+
+## 📞 **Support**
 
 For support, please:
-- Open an issue in the GitHub repository
-- Contact the maintainer through GitHub
+- 🐛 Open an issue in the [GitHub repository](https://github.com/Karthikeyan-BE/LMS_SQL/issues)
+- 💬 Contact the maintainer through GitHub
+- 📧 Check the discussions section for community help
 
-## 🔄 Version History
+---
+
+## 🔄 **Version History**
 
 - **v1.0.0** - Initial Release
   - Core library management features
@@ -333,6 +172,6 @@ For support, please:
 
 ---
 
-⭐ If you find this project helpful, please consider giving it a star!
+⭐ **If you find this project helpful, please consider giving it a star!**
 
 Made with ❤️ by Karthikeyan-BE
